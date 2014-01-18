@@ -116,7 +116,7 @@ class.
 class My_Plugin_Uninstall_Test extends WP_Plugin_Uninstall_UnitTestCase {
 
 	//
-	// Protechted properties.
+	// Protected properties.
 	//
 
 	/**
@@ -145,6 +145,7 @@ class My_Plugin_Uninstall_Test extends WP_Plugin_Uninstall_UnitTestCase {
 		// You must set the path to your plugin here.
 		$this->plugin_file = dirname( dirname( __FILE__ ) ) . '/myplugin.php';
 
+		// Don't forget to call the parent's setUp(), or the plugin won't get installed.
 		parent::setUp();
 	}
 
@@ -185,3 +186,23 @@ class My_Plugin_Uninstall_Test extends WP_Plugin_Uninstall_UnitTestCase {
 ```
 
 Save your testcase and you are all set!
+
+# Plugin Usage Simulation #
+
+The above example is a great first step in testing that your plugin is uninstalling
+itself completely. However, you can probably do better. The above testcase is only
+testing uninstallation from a fresh, clean install of your plugin. But what about
+after the user has actually used your plugin for awhile? It will probably have added
+some more options to the database somewhere along the way. To have more robust and
+complete uninstall tests, it is needful to simulate plugin usage.
+
+The testcase has provided for this. To use this feature, write up a script that will
+simulate your plugin being used. Call your various functions that add data to the
+database, for example. Save your code in a file.
+
+Now all you need to do for the testcase to run the simulation, is specify the path of
+the file you just created in the `$simulation_file` class property (same as we did
+with the main plugin file and the `$plugin_file` property above).
+
+The plugin usage simulation script will now be run remotely before the plugin is
+uninstalled.
