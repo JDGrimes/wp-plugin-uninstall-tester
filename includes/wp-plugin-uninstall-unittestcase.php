@@ -54,6 +54,15 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 	 */
 	protected $simulation_file;
 
+	/**
+	 * The ID of the blog created for multisite tests.
+	 *
+	 * @since 0.2.0
+	 *
+	 * @type int $_blog_id
+	 */
+	protected $_blog_id;
+
 	//
 	// Methods.
 	//
