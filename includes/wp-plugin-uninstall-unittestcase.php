@@ -91,7 +91,9 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 
 		parent::tearDown();
 
-		wpmu_delete_blog( $this->_blog_id, true );
+		if ( is_multisite() ) {
+			wpmu_delete_blog( $this->_blog_id, true );
+		}
 	}
 
 	/**
@@ -146,7 +148,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 			. ' ' . escapeshellarg( $this->plugin_file )
 			. ' ' . escapeshellarg( $this->install_function )
 			. ' ' . escapeshellarg( $this->locate_wp_tests_config() )
-			. ' ' . is_multisite()
+			. ' ' . (int) is_multisite()
 		);
 	}
 
@@ -168,7 +170,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 			. ' ' . escapeshellarg( $this->plugin_file )
 			. ' ' . escapeshellarg( $this->simulation_file )
 			. ' ' . escapeshellarg( $this->locate_wp_tests_config() )
-			. ' ' . is_multisite()
+			. ' ' . (int) is_multisite()
 		);
 	}
 
