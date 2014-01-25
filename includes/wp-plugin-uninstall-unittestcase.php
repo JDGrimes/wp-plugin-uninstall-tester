@@ -48,7 +48,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 	/**
 	 * Full path to a file to simulate plugin usage.
 	 *
-	 * @since 1.2.0
+	 * @since 0.1.0
 	 *
 	 * @type string $simulation_file
 	 */
@@ -94,7 +94,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 	/**
 	 * Clean up after the tests.
 	 *
-	 * @since 1.2.0
+	 * @since 0.2.0
 	 */
 	public function tearDown() {
 
