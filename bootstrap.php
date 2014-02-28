@@ -3,7 +3,7 @@
 /**
  * Bootstrap to load the classes.
  *
- * Include this in the bootstrap for you plugin tests.
+ * Include this in the bootstrap for your plugin tests.
  *
  * @package WP_Plugin_Uninstall_Tester
  * @since 0.1.0
