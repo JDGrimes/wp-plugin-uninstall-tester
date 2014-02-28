@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Install the a plugin remotely.
+ * Install a plugin remotely.
  *
  * @package WP_Plugin_Uninstall_Tester
  * @since 0.1.0
