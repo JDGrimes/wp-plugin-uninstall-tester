@@ -38,8 +38,6 @@ class WP_Plugin_Uninstall_Tester_PHPUnit_Util_Getopt extends PHPUnit_Util_Getopt
 	 * @since 0.1.0
 	 *
 	 * @param array $argv The commandline arguments.
-	 *
-	 * @return bool Whether the uninstall tests are being run.
 	 */
 	public function __construct( $argv ) {
 
