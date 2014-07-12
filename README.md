@@ -95,7 +95,7 @@ need to do `phpunit --group=uninstall`.
 
 # Usage #
 
-Now, its finally time to create a testcase. To do this, extend the `WP_Plugin_Uninstall_UnitTestCase`
+Now, it's finally time to create a testcase. To do this, extend the `WP_Plugin_Uninstall_UnitTestCase`
 class.
 
 ```php
@@ -192,7 +192,7 @@ Save your testcase and you are all set!
 The above example is a great first step in testing that your plugin is uninstalling
 itself completely. However, you can probably do better. The above testcase is only
 testing uninstallation from a fresh, clean install of your plugin. But what about
-after the user has actually used your plugin for awhile? It will probably have added
+after the user has actually used your plugin for a while? It will probably have added
 some more options to the database somewhere along the way. To have more robust and
 complete uninstall tests, it is needful to simulate plugin usage.
 
