@@ -35,4 +35,16 @@ $is_multisite     = $argv[4];
 
 require dirname( __FILE__ ) . '/bootstrap.php';
 
+/**
+ * Load the WP unit test factories.
+ *
+ * Use the $wp_test_factory global to create users, posts, etc., the same way that
+ * you use the $factory propety in WP unit test case classes.
+ *
+ * @since 0.2.0
+ */
+require_once getenv( 'WP_TESTS_DIR' ) . 'includes/factory.php';
+
+$GLOBALS['wp_test_factory'] = new WP_UnitTest_Factory;
+
 require $simulation_file;
