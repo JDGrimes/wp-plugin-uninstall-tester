@@ -24,9 +24,18 @@ database.
 
 # Installation #
 
-To use the uninstall unit tester with your plugin, you need to add it to your repo.
-This can be done like so (examples assume you are adding these tools
-in `tests/phpunit/includes/uninstall`):
+## Composer ##
+You can install this library with composer by adding it to your `require`s:
+
+```json
+    "require": {
+        "jdgrimes/wp-plugin-uninstall-tester": "~0.1"
+    }
+```
+
+## Git Subtree ##
+Alternatively, you can install the library with `git subtree` like so (examples
+assume you are adding these tools in `tests/phpunit/includes/uninstall`):
 
 ```bash
 git subtree add --prefix tests/phpunit/includes/uninstall \
