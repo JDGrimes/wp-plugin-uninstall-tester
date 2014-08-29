@@ -215,3 +215,7 @@ with the main plugin file and the `$plugin_file` property above).
 
 The plugin usage simulation script will now be run remotely before the plugin is
 uninstalled.
+
+# License #
+
+This library is jointly licensed under the MIT and GPLv2.
