@@ -1,7 +1,7 @@
 {
     "name": "jdgrimes/wp-plugin-uninstall-tester",
     "description": "Utilities for testing WordPress plugin install/uninstall with PHPUnit",
-    "homepage": "http://github.com/Seldaek/monolog",
+    "homepage": "https://github.com/JDGrimes/wp-plugin-uninstall-tester",
     "license": "MIT",
     "authors": [
         {
