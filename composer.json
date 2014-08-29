@@ -1,0 +1,7 @@
+{
+    "name": "jdgrimes/wp-plugin-uninstall-tester",
+    "description": "Utilities for testing WordPress plugin install/uninstall with PHPUnit",
+    "require": {
+        "php": ">=5.2.0",
+    }
+}
