@@ -55,6 +55,15 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 	protected $simulation_file;
 
 	/**
+	 * Whether the usage simulate file has been run yet.
+	 *
+	 * @since 0.3.0
+	 *
+	 * @type bool $simulated_usage
+	 */
+	protected $simulated_usage = false;
+
+	/**
 	 * The ID of the blog created for multisite tests.
 	 *
 	 * @since 0.2.0
@@ -173,6 +182,14 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 	 */
 	public function simulate_usage() {
 
+		if ( empty( $this->simulation_file ) || $this->simulated_usage ) {
+			return;
+		}
+
+		global $wpdb;
+
+		$wpdb->query( 'ROLLBACK' );
+
 		system(
 			WP_PHP_BINARY
 			. ' ' . escapeshellarg( dirname( dirname( __FILE__ ) ) . '/bin/simulate-plugin-use.php' )
@@ -181,6 +198,10 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 			. ' ' . escapeshellarg( $this->locate_wp_tests_config() )
 			. ' ' . (int) is_multisite()
 		);
+
+		$this->flush_cache();
+
+		$this->simulated_usage = true;
 	}
 
 	/**
@@ -195,11 +216,11 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 
 		global $wpdb;
 
-		$wpdb->query( 'ROLLBACK' );
+		if ( ! $this->simulated_usage ) {
 
-		// If the plugin has a usage simulation file, run it remotely.
-		if ( ! empty( $this->simulation_file ) ) {
+			$wpdb->query( 'ROLLBACK' );
 
+			// If the plugin has a usage simulation file, run it remotely.
 			$this->simulate_usage();
 		}
 
