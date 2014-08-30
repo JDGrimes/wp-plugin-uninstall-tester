@@ -214,7 +214,8 @@ the file you just created in the `$simulation_file` class property (same as we d
 with the main plugin file and the `$plugin_file` property above).
 
 The plugin usage simulation script will now be run remotely before the plugin is
-uninstalled.
+uninstalled. You can also run it before this if needed, by calling
+`$this->simulate_usage()`.
 
 # License #
 
