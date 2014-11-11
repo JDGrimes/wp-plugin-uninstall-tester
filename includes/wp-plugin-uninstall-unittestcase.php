@@ -303,9 +303,26 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 	 */
 	public static function assertNoOptionsWithPrefix( $prefix, $message = '' ) {
 
-		global $wpdb;
+		if ( is_multisite() ) {
+			$prefix = $GLOBALS['wpdb']->prefix . $prefix;
+		}
 
-		self::assertThat( $prefix, self::tableColumnHasNoRowsWithPrefix( $wpdb->options, 'option_name', $prefix ), $message );
+		self::assertNoSiteOptionsWithPrefix( $prefix, $message );
+	}
+
+	/**
+	 * Asserts that no site options with a given prefix exist.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param string $prefix  The prefix to check for.
+	 * @param string $message An optional message.
+	 *
+	 * @throws PHPUnit_Framework_AssertionFailedError
+	 */
+	public static function assertNoSiteOptionsWithPrefix( $prefix, $message = '' ) {
+
+		self::assertThat( $prefix, self::tableColumnHasNoRowsWithPrefix( $GLOBALS['wpdb']->options, 'option_name', $prefix ), $message );
 	}
 
 	/**
