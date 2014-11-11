@@ -313,7 +313,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 	/**
 	 * Asserts that no site options with a given prefix exist.
 	 *
-	 * @since 0.1.0
+	 * @since 0.4.0
 	 *
 	 * @param string $prefix  The prefix to check for.
 	 * @param string $message An optional message.
