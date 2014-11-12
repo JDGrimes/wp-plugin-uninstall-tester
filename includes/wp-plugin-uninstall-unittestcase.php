@@ -303,10 +303,6 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 	 */
 	public static function assertNoOptionsWithPrefix( $prefix, $message = '' ) {
 
-		if ( is_multisite() ) {
-			$prefix = $GLOBALS['wpdb']->prefix . $prefix;
-		}
-
 		self::assertNoSiteOptionsWithPrefix( $prefix, $message );
 	}
 
@@ -322,7 +318,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 	 */
 	public static function assertNoSiteOptionsWithPrefix( $prefix, $message = '' ) {
 
-		self::assertThat( $prefix, self::tableColumnHasNoRowsWithPrefix( $GLOBALS['wpdb']->options, 'option_name', $prefix ), $message );
+		self::assertThat( $prefix, self::tableColumnHasNoRowsWithPrefix( $GLOBALS['wpdb']->sitemeta, 'meta_key', $prefix ), $message );
 	}
 
 	/**
