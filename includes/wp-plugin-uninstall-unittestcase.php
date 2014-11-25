@@ -303,7 +303,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 	 */
 	public static function assertNoOptionsWithPrefix( $prefix, $message = '' ) {
 
-		self::assertNoSiteOptionsWithPrefix( $prefix, $message );
+		self::assertThat( $prefix, self::tableColumnHasNoRowsWithPrefix( $GLOBALS['wpdb']->options, 'option_name', $prefix ), $message );
 	}
 
 	/**
