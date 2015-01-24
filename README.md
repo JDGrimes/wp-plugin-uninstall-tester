@@ -33,22 +33,6 @@ You can install this library with composer by adding it to your `require`s:
     }
 ```
 
-## Git Subtree ##
-Alternatively, you can install the library with `git subtree` like so (examples
-assume you are adding these tools in `tests/phpunit/includes/uninstall`):
-
-```bash
-git subtree add --prefix tests/phpunit/includes/uninstall \
-   git@github.com:JDGrimes/wp-plugin-uninstall-tester.git master --squash
-```
-
-Updating is then done like so:
-
-```bash
-git subtree pull --prefix tests/phpunit/includes/uninstall \
-   git@github.com:JDGrimes/wp-plugin-uninstall-tester.git master --squash
-```
-
 # Set Up #
 
 Once you have the testing tools installed, you need to make a few changes to your
