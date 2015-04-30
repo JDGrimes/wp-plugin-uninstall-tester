@@ -25,7 +25,7 @@ function _wp_plugin_unintsall_tester_load_plugin_file() {
  *
  * @since 0.1.0
  */
-require_once getenv( 'WP_TESTS_DIR' ) . 'includes/functions.php';
+require_once getenv( 'WP_TESTS_DIR' ) . '/includes/functions.php';
 
 tests_add_filter( 'muplugins_loaded', '_wp_plugin_unintsall_tester_load_plugin_file' );
 
@@ -43,7 +43,7 @@ require dirname( __FILE__ ) . '/bootstrap.php';
  *
  * @since 0.2.0
  */
-require_once getenv( 'WP_TESTS_DIR' ) . 'includes/factory.php';
+require_once getenv( 'WP_TESTS_DIR' ) . '/includes/factory.php';
 
 $GLOBALS['wp_test_factory'] = new WP_UnitTest_Factory;
 
