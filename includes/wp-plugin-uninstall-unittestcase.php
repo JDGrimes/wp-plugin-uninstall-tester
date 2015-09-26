@@ -132,7 +132,8 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 		$config_file_path .= '/wp-tests-config.php';
 
 		if ( ! is_readable( $config_file_path ) ) {
-			exit( 'Error: Unable to locate the wp-tests-config.php file.' );
+			echo( 'Error: Unable to locate the wp-tests-config.php file.' );
+			exit( 1 );
 		}
 
 		return $config_file_path;
@@ -225,7 +226,8 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 		remove_filter( 'query', $drop_temp_tables );
 
 		if ( empty( $this->plugin_file ) ) {
-			exit( 'Error: $plugin_file property not set.' . PHP_EOL );
+			echo( 'Error: $plugin_file property not set.' . PHP_EOL );
+			exit( 1 );
 		}
 
 		$plugin_dir = dirname( $this->plugin_file );
@@ -245,7 +247,8 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 
 		} else {
 
-			exit( 'Error: $uninstall_function property not set.' . PHP_EOL );
+			echo( 'Error: $uninstall_function property not set.' . PHP_EOL );
+			exit( 1 );
 		}
 
 		$this->flush_cache();
