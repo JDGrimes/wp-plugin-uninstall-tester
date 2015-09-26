@@ -8,14 +8,11 @@
  */
 
 $plugin_file      = $argv[1];
-$install_function = $argv[2];
-$config_file_path = $argv[3];
-$is_multisite     = $argv[4];
+$config_file_path = $argv[2];
+$is_multisite     = $argv[3];
 
 require dirname( __FILE__ ) . '/bootstrap.php';
 
 require $plugin_file;
 
-add_action( 'activate_' . $plugin_file, $install_function );
-
-do_action( 'activate_' . $plugin_file, false );
+do_action( 'activate_' . plugin_basename( $plugin_file ), false );
