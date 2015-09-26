@@ -28,15 +28,6 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 	protected $plugin_file;
 
 	/**
-	 * The plugin's install function.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @type callable $install_function
-	 */
-	protected $install_function;
-
-	/**
 	 * The plugin's uninstall function (if it has one).
 	 *
 	 * @since 0.1.0
@@ -164,7 +155,6 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 			WP_PHP_BINARY
 			. ' ' . escapeshellarg( dirname( dirname( __FILE__ ) ) . '/bin/install-plugin.php' )
 			. ' ' . escapeshellarg( $this->plugin_file )
-			. ' ' . escapeshellarg( $this->install_function )
 			. ' ' . escapeshellarg( $this->locate_wp_tests_config() )
 			. ' ' . (int) is_multisite()
 		);

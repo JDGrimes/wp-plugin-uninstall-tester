@@ -119,13 +119,6 @@ class My_Plugin_Uninstall_Test extends WP_Plugin_Uninstall_UnitTestCase {
 	 */
 	protected $plugin_file;
 
-	/**
-	 * The plugin's install function.
-	 *
-	 * @type callable $install_function
-	 */
-	protected $install_function = 'my_plugin_activate';
-
 	//
 	// Public methods.
 	//
