@@ -1,0 +1,21 @@
+# Travis CI config.
+
+language: php
+
+# Becasue PHP 7.0 isn't installed by default.
+php:
+  - 7.0
+
+before_script:
+  - alias check-php-syntax="if find . -name '*.php' -exec php -l {} \; | grep '^Parse error'; then return 1; fi;"
+
+script:
+  - phpenv global 5.2 && check-php-syntax
+  - phpenv global 5.3 && check-php-syntax
+  - phpenv global 5.4 && check-php-syntax
+  - phpenv global 5.5 && check-php-syntax
+  - phpenv global 5.6 && check-php-syntax
+  - phpenv global 7.0 && check-php-syntax
+  - phpenv global hhvm && check-php-syntax
+
+# EOF
