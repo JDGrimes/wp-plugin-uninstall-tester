@@ -25,12 +25,9 @@ database.
 # Installation #
 
 ## Composer ##
-You can install this library with composer by adding it in your `package.json`:
 
-```json
-    "require-dev": {
-        "jdgrimes/wp-plugin-uninstall-tester": "~0.4"
-    }
+```bash
+composer require --dev jdgrimes/wp-plugin-uninstall-tester "~0.5"
 ```
 
 # Set Up #
