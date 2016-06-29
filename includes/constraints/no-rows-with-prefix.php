@@ -64,6 +64,11 @@ class WP_Plugin_Uninstall_Tester_PHPUnit_Constraint_NoRowsWithPrefix extends PHP
 		$this->table  = esc_sql( $table );
 		$this->column = esc_sql( $column );
 		$this->prefix = $prefix;
+
+		// Back-compat for pre PHPUnit 4.0.0. See #14.
+		if ( is_callable( 'parent::__construct' ) ) {
+			parent::__construct();
+		}
 	}
 
 	/**
