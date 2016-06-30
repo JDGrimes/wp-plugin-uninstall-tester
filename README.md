@@ -83,6 +83,13 @@ config file:
 That will exclude the uninstall tests from running by default. To run them, you'll
 need to do `phpunit --group=uninstall`.
 
+Finally, you need to make sure that you've copied or symlinked your plugin into the
+plugins folder of the test site (if you aren't developing it there already):
+
+```bash
+ln -s path/to/my-plugin path/to/trunk/src/wp-content/plugins/my-plugin
+```
+
 # Usage #
 
 Now, it's finally time to create a testcase. To do this, extend the `WP_Plugin_Uninstall_UnitTestCase`
