@@ -19,22 +19,25 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 	//
 
 	/**
-	 * The full path to the main plugin file.
+	 * The path to the main plugin file, relative to the plugin directory.
+	 *
+	 * E.g.: my-plugin/my-plugin.php
 	 *
 	 * @since 0.1.0
+	 * @since 0.6.0 No longer expected to be a full path.
 	 *
 	 * @type string $plugin_file
 	 */
 	protected $plugin_file;
 
 	/**
-	 * The plugin's uninstall function (if it has one).
+	 * Whether to run the tests with the plugin network-activated.
 	 *
-	 * @since 0.1.0
+	 * @since 0.6.0
 	 *
-	 * @type callable $uninstall_function
+	 * @type bool $network_active
 	 */
-	protected $uninstall_function;
+	protected $network_active = false;
 
 	/**
 	 * Full path to a file to simulate plugin usage.
@@ -158,6 +161,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 			. ' ' . escapeshellarg( $this->plugin_file )
 			. ' ' . escapeshellarg( $this->locate_wp_tests_config() )
 			. ' ' . (int) is_multisite()
+			. ' ' . (int) $this->network_active
 		);
 	}
 
@@ -188,6 +192,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 			. ' ' . escapeshellarg( $this->simulation_file )
 			. ' ' . escapeshellarg( $this->locate_wp_tests_config() )
 			. ' ' . (int) is_multisite()
+			. ' ' . (int) $this->network_active
 		);
 
 		$this->flush_cache();
@@ -230,26 +235,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 			exit( 1 );
 		}
 
-		$plugin_dir = dirname( $this->plugin_file );
-
-		if ( file_exists( $plugin_dir . '/uninstall.php' ) ) {
-
-			define( 'WP_UNINSTALL_PLUGIN', $this->plugin_file );
-			include $plugin_dir . '/uninstall.php';
-
-		} elseif ( ! empty( $this->uninstall_function ) ) {
-
-			include $this->plugin_file;
-
-			add_action( 'uninstall_' . $this->plugin_file, $this->uninstall_function );
-
-			do_action( 'uninstall_' . $this->plugin_file );
-
-		} else {
-
-			echo( 'Error: $uninstall_function property not set.' . PHP_EOL );
-			exit( 1 );
-		}
+		uninstall_plugin( $this->plugin_file );
 
 		$this->flush_cache();
 	}

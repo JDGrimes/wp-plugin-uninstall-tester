@@ -8,16 +8,6 @@
  */
 
 /**
- * Load the main plugin file as if it was active in plugin usage simulation.
- *
- * @since 0.1.0
- */
-function _wp_plugin_unintsall_tester_load_plugin_file() {
-
-	require $GLOBALS['argv'][1];
-}
-
-/**
  * Load the WordPress tests functions.
  *
  * We are loading this so that we can add our tests filter to load the plugin, using
@@ -27,11 +17,11 @@ function _wp_plugin_unintsall_tester_load_plugin_file() {
  */
 require_once getenv( 'WP_TESTS_DIR' ) . '/includes/functions.php';
 
-tests_add_filter( 'muplugins_loaded', '_wp_plugin_unintsall_tester_load_plugin_file' );
-
+$plugin_file      = $argv[1];
 $simulation_file  = $argv[2];
 $config_file_path = $argv[3];
 $is_multisite     = $argv[4];
+$network_active   = $argv[5];
 
 require dirname( __FILE__ ) . '/bootstrap.php';
 
@@ -48,3 +38,5 @@ require_once getenv( 'WP_TESTS_DIR' ) . '/includes/factory.php';
 $GLOBALS['wp_test_factory'] = new WP_UnitTest_Factory;
 
 require $simulation_file;
+
+deactivate_plugins( $plugin_file, false, $network_active );

@@ -126,7 +126,10 @@ class My_Plugin_Uninstall_Test extends WP_Plugin_Uninstall_UnitTestCase {
 	public function setUp() {
 
 		// You must set the path to your plugin here.
-		$this->plugin_file = dirname( dirname( __FILE__ ) ) . '/myplugin.php';
+		// This should be the path relative to the plugin directory on the test site.
+		// You will need to copy or symlink your plugin's folder there if it isn't
+		// already.
+		$this->plugin_file = 'my-plugin/my-plugin.php';
 
 		// Don't forget to call the parent's setUp(), or the plugin won't get installed.
 		parent::setUp();
