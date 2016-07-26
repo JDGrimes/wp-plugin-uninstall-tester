@@ -49,7 +49,7 @@ tests aren't being run.
  */
 
 // Include the uninstall test tools functions.
-include_once dirname( __FILE__ ) . '/uninstall/includes/functions.php';
+include_once dirname( __FILE__ ) . '/../../../vendor/jdgrimes/wp-plugin-uninstall-tester/includes/functions.php';
 
 // Check if the tests are running. Only load the plugin if they aren't.
 if ( ! running_wp_plugin_uninstall_tests() ) {
@@ -65,7 +65,7 @@ Secondly, you need to include the `bootstrap.php` file:
  * uninstall testcase extends WordPress's WP_UnitTestCase class.
  */
 
-include_once dirname( __FILE__ ) . '/uninstall/bootstrap.php';
+include_once dirname( __FILE__ ) . '/../../../vendor/jdgrimes/wp-plugin-uninstall-tester/bootstrap.php';
 ```
 
 Thirdly, you need to exclude the `uninstall` group from the tests in your PHPUnit XML
