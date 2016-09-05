@@ -27,7 +27,7 @@ database.
 ## Composer ##
 
 ```bash
-composer require --dev jdgrimes/wp-plugin-uninstall-tester "~0.6"
+composer require --dev jdgrimes/wp-plugin-uninstall-tester
 ```
 
 # Set Up #
