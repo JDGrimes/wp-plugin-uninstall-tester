@@ -147,6 +147,8 @@ class My_Plugin_Uninstall_Test extends WP_Plugin_Uninstall_UnitTestCase {
 	 */
 	public function test_uninstall() {
 
+		global $wpdb;
+		
 		/*
 		 * First test that the plugin installed itself properly.
 		 */
