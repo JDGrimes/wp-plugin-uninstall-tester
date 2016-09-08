@@ -165,7 +165,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 		);
 
 		if ( 0 !== $exit_code ) {
-			$this->fail( 'Remote module installation failed with exit code ' . $exit_code );
+			$this->fail( 'Remote plugin installation failed with exit code ' . $exit_code );
 		}
 	}
 
