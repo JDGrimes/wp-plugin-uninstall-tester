@@ -203,4 +203,4 @@ uninstalled. You can also run it before this if needed, by calling
 
 # License #
 
-This library is jointly licensed under the MIT and GPLv2.
+This library is provided under the MIT license.
