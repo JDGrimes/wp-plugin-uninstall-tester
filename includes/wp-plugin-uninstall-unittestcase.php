@@ -111,7 +111,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 	/**
 	 * Locate the config file for the WordPress tests.
 	 *
-	 * The script is exited with an error message if no config file can be found.
+	 * The the test is failed with an error message if no config file can be found.
 	 *
 	 * @since 0.1.0
 	 *
@@ -135,8 +135,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 		$config_file_path .= '/wp-tests-config.php';
 
 		if ( ! is_readable( $config_file_path ) ) {
-			echo( 'Error: Unable to locate the wp-tests-config.php file.' );
-			exit( 1 );
+			$this->fail( 'Error: Unable to locate the wp-tests-config.php file.' );
 		}
 
 		return $config_file_path;
@@ -162,7 +161,12 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 			. ' ' . escapeshellarg( $this->locate_wp_tests_config() )
 			. ' ' . (int) is_multisite()
 			. ' ' . (int) $this->network_active
+			, $exit_code
 		);
+
+		if ( 0 !== $exit_code ) {
+			$this->fail( 'Remote module installation failed with exit code ' . $exit_code );
+		}
 	}
 
 	/**
@@ -193,7 +197,12 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 			. ' ' . escapeshellarg( $this->locate_wp_tests_config() )
 			. ' ' . (int) is_multisite()
 			. ' ' . (int) $this->network_active
+			, $exit_code
 		);
+
+		if ( 0 !== $exit_code ) {
+			$this->fail( 'Usage simulation failed with exit code ' . $exit_code );
+		}
 
 		$this->flush_cache();
 
@@ -231,8 +240,7 @@ abstract class WP_Plugin_Uninstall_UnitTestCase extends WP_UnitTestCase {
 		remove_filter( 'query', $drop_temp_tables );
 
 		if ( empty( $this->plugin_file ) ) {
-			echo( 'Error: $plugin_file property not set.' . PHP_EOL );
-			exit( 1 );
+			$this->fail( 'Error: $plugin_file property not set.' );
 		}
 
 		uninstall_plugin( $this->plugin_file );
