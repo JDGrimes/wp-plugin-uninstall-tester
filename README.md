@@ -3,6 +3,10 @@ WP Plugin Uninstall Tester
 
 A testcase class for testing plugin install and uninstall, with related tools.
 
+# Notice
+
+This project is no longer maintained. It has been merged into the [WP Plugin PHPUnit Bootstrap](https://github.com/JDGrimes/wpppb). It is recommended that you use that instead.
+
 # Background #
 
 The purpose of this testcase is to allow you to make plugin uninstall testing as
